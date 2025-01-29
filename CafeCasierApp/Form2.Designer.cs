@@ -30,11 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminPanelForm));
             panel1 = new Panel();
-            panel2 = new Panel();
-            btnExit = new Button();
-            pictureBox1 = new PictureBox();
-            btnUser = new Button();
             btnMenu = new Button();
+            btnUser = new Button();
+            panel2 = new Panel();
+            pictureBox1 = new PictureBox();
+            btnExit = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -52,6 +52,26 @@
             panel1.Size = new Size(816, 453);
             panel1.TabIndex = 0;
             // 
+            // btnMenu
+            // 
+            btnMenu.BackgroundImage = (Image)resources.GetObject("btnMenu.BackgroundImage");
+            btnMenu.Location = new Point(434, 219);
+            btnMenu.Name = "btnMenu";
+            btnMenu.Size = new Size(110, 110);
+            btnMenu.TabIndex = 2;
+            btnMenu.UseVisualStyleBackColor = true;
+            btnMenu.Click += btnMenu_Click;
+            // 
+            // btnUser
+            // 
+            btnUser.BackgroundImage = (Image)resources.GetObject("btnUser.BackgroundImage");
+            btnUser.Location = new Point(286, 219);
+            btnUser.Name = "btnUser";
+            btnUser.Size = new Size(110, 110);
+            btnUser.TabIndex = 1;
+            btnUser.UseVisualStyleBackColor = true;
+            btnUser.Click += btnUser_Click;
+            // 
             // panel2
             // 
             panel2.BackgroundImage = (Image)resources.GetObject("panel2.BackgroundImage");
@@ -62,6 +82,15 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(816, 112);
             panel2.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(15, 15);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(283, 77);
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
             // 
             // btnExit
             // 
@@ -75,33 +104,6 @@
             btnExit.Text = "Keluar";
             btnExit.UseVisualStyleBackColor = false;
             btnExit.Click += btnExit_Click;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(15, 15);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(283, 77);
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
-            // 
-            // btnUser
-            // 
-            btnUser.BackgroundImage = (Image)resources.GetObject("btnUser.BackgroundImage");
-            btnUser.Location = new Point(286, 219);
-            btnUser.Name = "btnUser";
-            btnUser.Size = new Size(110, 110);
-            btnUser.TabIndex = 1;
-            btnUser.UseVisualStyleBackColor = true;
-            // 
-            // btnMenu
-            // 
-            btnMenu.BackgroundImage = (Image)resources.GetObject("btnMenu.BackgroundImage");
-            btnMenu.Location = new Point(434, 219);
-            btnMenu.Name = "btnMenu";
-            btnMenu.Size = new Size(110, 110);
-            btnMenu.TabIndex = 2;
-            btnMenu.UseVisualStyleBackColor = true;
             // 
             // AdminPanelForm
             // 

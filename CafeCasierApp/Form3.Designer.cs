@@ -33,9 +33,9 @@
             pictureBox1 = new PictureBox();
             btnExit = new Button();
             panel1 = new Panel();
-            btnPelanggan = new Button();
-            btnPesanan = new Button();
             btnPembayaran = new Button();
+            btnPesanan = new Button();
+            btnPelanggan = new Button();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
@@ -87,14 +87,15 @@
             panel1.Size = new Size(816, 453);
             panel1.TabIndex = 1;
             // 
-            // btnPelanggan
+            // btnPembayaran
             // 
-            btnPelanggan.BackgroundImage = (Image)resources.GetObject("btnPelanggan.BackgroundImage");
-            btnPelanggan.Location = new Point(226, 219);
-            btnPelanggan.Name = "btnPelanggan";
-            btnPelanggan.Size = new Size(110, 110);
-            btnPelanggan.TabIndex = 3;
-            btnPelanggan.UseVisualStyleBackColor = true;
+            btnPembayaran.BackgroundImage = (Image)resources.GetObject("btnPembayaran.BackgroundImage");
+            btnPembayaran.Location = new Point(490, 219);
+            btnPembayaran.Name = "btnPembayaran";
+            btnPembayaran.Size = new Size(110, 110);
+            btnPembayaran.TabIndex = 5;
+            btnPembayaran.UseVisualStyleBackColor = true;
+            btnPembayaran.Click += btnPembayaran_Click;
             // 
             // btnPesanan
             // 
@@ -104,15 +105,17 @@
             btnPesanan.Size = new Size(110, 110);
             btnPesanan.TabIndex = 4;
             btnPesanan.UseVisualStyleBackColor = true;
+            btnPesanan.Click += btnPesanan_Click;
             // 
-            // btnPembayaran
+            // btnPelanggan
             // 
-            btnPembayaran.BackgroundImage = (Image)resources.GetObject("btnPembayaran.BackgroundImage");
-            btnPembayaran.Location = new Point(490, 219);
-            btnPembayaran.Name = "btnPembayaran";
-            btnPembayaran.Size = new Size(110, 110);
-            btnPembayaran.TabIndex = 5;
-            btnPembayaran.UseVisualStyleBackColor = true;
+            btnPelanggan.BackgroundImage = (Image)resources.GetObject("btnPelanggan.BackgroundImage");
+            btnPelanggan.Location = new Point(226, 219);
+            btnPelanggan.Name = "btnPelanggan";
+            btnPelanggan.Size = new Size(110, 110);
+            btnPelanggan.TabIndex = 3;
+            btnPelanggan.UseVisualStyleBackColor = true;
+            btnPelanggan.Click += btnPelanggan_Click;
             // 
             // KasirPanelForm
             // 

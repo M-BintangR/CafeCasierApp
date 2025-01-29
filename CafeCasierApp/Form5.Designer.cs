@@ -1,6 +1,6 @@
 ﻿namespace CafeCasierApp
 {
-    partial class Form5
+    partial class MenuForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form5));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuForm));
             btnEdit = new Button();
             btnHapus = new Button();
             btnRefresh = new Button();
@@ -41,11 +41,11 @@
             btnExit = new Button();
             panel1 = new Panel();
             panel3 = new Panel();
-            panel2 = new Panel();
-            label3 = new Label();
-            txtHarga = new TextBox();
             label4 = new Label();
             txtKeterangan = new TextBox();
+            label3 = new Label();
+            txtHarga = new TextBox();
+            panel2 = new Panel();
             ((System.ComponentModel.ISupportInitialize)tableData).BeginInit();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
@@ -138,6 +138,7 @@
             btnBack.TabIndex = 2;
             btnBack.Text = "Kembali";
             btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
             // 
             // label1
             // 
@@ -163,6 +164,7 @@
             btnExit.TabIndex = 0;
             btnExit.Text = "Keluar";
             btnExit.UseVisualStyleBackColor = false;
+            btnExit.Click += btnExit_Click;
             // 
             // panel1
             // 
@@ -194,40 +196,6 @@
             panel3.Size = new Size(727, 390);
             panel3.TabIndex = 1;
             // 
-            // panel2
-            // 
-            panel2.BackgroundImage = (Image)resources.GetObject("panel2.BackgroundImage");
-            panel2.Controls.Add(btnBack);
-            panel2.Controls.Add(label1);
-            panel2.Controls.Add(btnExit);
-            panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(0, 0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(800, 112);
-            panel2.TabIndex = 0;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(30, 119);
-            label3.Name = "label3";
-            label3.RightToLeft = RightToLeft.Yes;
-            label3.Size = new Size(51, 20);
-            label3.TabIndex = 14;
-            label3.Text = "Harga";
-            // 
-            // txtHarga
-            // 
-            txtHarga.BackColor = SystemColors.ScrollBar;
-            txtHarga.BorderStyle = BorderStyle.None;
-            txtHarga.Font = new Font("Segoe UI", 9F);
-            txtHarga.Location = new Point(33, 144);
-            txtHarga.Multiline = true;
-            txtHarga.Name = "txtHarga";
-            txtHarga.Size = new Size(261, 36);
-            txtHarga.TabIndex = 13;
-            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -250,14 +218,48 @@
             txtKeterangan.Size = new Size(261, 68);
             txtKeterangan.TabIndex = 15;
             // 
-            // Form5
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(30, 117);
+            label3.Name = "label3";
+            label3.RightToLeft = RightToLeft.Yes;
+            label3.Size = new Size(51, 20);
+            label3.TabIndex = 14;
+            label3.Text = "Harga";
+            // 
+            // txtHarga
+            // 
+            txtHarga.BackColor = SystemColors.ScrollBar;
+            txtHarga.BorderStyle = BorderStyle.None;
+            txtHarga.Font = new Font("Segoe UI", 9F);
+            txtHarga.Location = new Point(33, 142);
+            txtHarga.Multiline = true;
+            txtHarga.Name = "txtHarga";
+            txtHarga.Size = new Size(261, 36);
+            txtHarga.TabIndex = 13;
+            // 
+            // panel2
+            // 
+            panel2.BackgroundImage = (Image)resources.GetObject("panel2.BackgroundImage");
+            panel2.Controls.Add(btnBack);
+            panel2.Controls.Add(label1);
+            panel2.Controls.Add(btnExit);
+            panel2.Dock = DockStyle.Top;
+            panel2.Location = new Point(0, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(800, 112);
+            panel2.TabIndex = 0;
+            // 
+            // MenuForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 565);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "Form5";
+            Name = "MenuForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form5";
             ((System.ComponentModel.ISupportInitialize)tableData).EndInit();

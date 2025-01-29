@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace CafeCasierApp
+﻿namespace CafeCasierApp
 {
     public partial class AdminPanelForm : Form
     {
@@ -21,6 +11,19 @@ namespace CafeCasierApp
         {
             this.Hide();
             new LoginForm().Show();
+        }
+
+        private void btnUser_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new PenggunaForm().Show();
+        }
+
+        private void btnMenu_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new MenuForm().Show();
+            
         }
     }
 }
