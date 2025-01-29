@@ -27,10 +27,19 @@ namespace CafeCasierApp
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if(this.email == "admin@gmail.com" && this.password == "adminadmi")
+            if(this.email == "admin@gmail.com" && this.password == "adminadmin")
+            {
+                new AdminPanelForm().Show();
+            }else if(this.email == "kasir@gmail.com" && this.password == "kasirkasir")
             {
 
             }
+            else
+            {
+                MessageBox.Show("Ada yang salah : password atau email anda salah!", "Terjadi Kesalahan");
+            }
+
+            this.Hide();
         }
     }
 }

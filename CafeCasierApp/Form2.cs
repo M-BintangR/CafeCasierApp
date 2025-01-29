@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CafeCasierApp
 {
-    public partial class Form2 : Form
+    public partial class AdminPanelForm : Form
     {
-        public Form2()
+        public AdminPanelForm()
         {
             InitializeComponent();
         }

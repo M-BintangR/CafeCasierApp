@@ -1,6 +1,6 @@
 ﻿namespace CafeCasierApp
 {
-    partial class Form2
+    partial class AdminPanelForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,16 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminPanelForm));
             panel1 = new Panel();
             panel2 = new Panel();
             btnExit = new Button();
+            pictureBox1 = new PictureBox();
+            btnUser = new Button();
+            btnMenu = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackgroundImage = Properties.Resources.Premium_Vector___Coffee_Beans_seamless_Pattern_Cute_vector_background;
+            panel1.Controls.Add(btnMenu);
+            panel1.Controls.Add(btnUser);
             panel1.Controls.Add(panel2);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
@@ -47,10 +54,13 @@
             // 
             // panel2
             // 
+            panel2.BackgroundImage = (Image)resources.GetObject("panel2.BackgroundImage");
+            panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(btnExit);
-            panel2.Location = new Point(30, 31);
+            panel2.Dock = DockStyle.Top;
+            panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(751, 250);
+            panel2.Size = new Size(816, 112);
             panel2.TabIndex = 0;
             // 
             // btnExit
@@ -58,7 +68,7 @@
             btnExit.BackColor = Color.FromArgb(72, 23, 0);
             btnExit.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnExit.ForeColor = Color.White;
-            btnExit.Location = new Point(605, 15);
+            btnExit.Location = new Point(662, 34);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(131, 41);
             btnExit.TabIndex = 0;
@@ -66,17 +76,46 @@
             btnExit.UseVisualStyleBackColor = false;
             btnExit.Click += btnExit_Click;
             // 
-            // Form2
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(15, 15);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(283, 77);
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
+            // 
+            // btnUser
+            // 
+            btnUser.BackgroundImage = (Image)resources.GetObject("btnUser.BackgroundImage");
+            btnUser.Location = new Point(286, 219);
+            btnUser.Name = "btnUser";
+            btnUser.Size = new Size(110, 110);
+            btnUser.TabIndex = 1;
+            btnUser.UseVisualStyleBackColor = true;
+            // 
+            // btnMenu
+            // 
+            btnMenu.BackgroundImage = (Image)resources.GetObject("btnMenu.BackgroundImage");
+            btnMenu.Location = new Point(434, 219);
+            btnMenu.Name = "btnMenu";
+            btnMenu.Size = new Size(110, 110);
+            btnMenu.TabIndex = 2;
+            btnMenu.UseVisualStyleBackColor = true;
+            // 
+            // AdminPanelForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(816, 453);
             Controls.Add(panel1);
-            Name = "Form2";
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "AdminPanelForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Panel Admin";
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -85,5 +124,8 @@
         private Panel panel1;
         private Panel panel2;
         private Button btnExit;
+        private PictureBox pictureBox1;
+        private Button btnMenu;
+        private Button btnUser;
     }
 }
