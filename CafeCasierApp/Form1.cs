@@ -30,9 +30,10 @@ namespace CafeCasierApp
             if(this.email == "admin@gmail.com" && this.password == "adminadmin")
             {
                 new AdminPanelForm().Show();
+
             }else if(this.email == "kasir@gmail.com" && this.password == "kasirkasir")
             {
-
+                new KasirPanelForm().Show();
             }
             else
             {

@@ -10,17 +10,27 @@ using System.Windows.Forms;
 
 namespace CafeCasierApp
 {
-    public partial class AdminPanelForm : Form
+    public partial class PenggunaForm : Form
     {
-        public AdminPanelForm()
+        public PenggunaForm()
         {
             InitializeComponent();
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void btnExit_Click(object sender, EventArgs e)
         {
+            Application.Exit();
+        }   
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
             this.Hide();
-            new LoginForm().Show();
+            new AdminPanelForm().Show();
         }
     }
 }
