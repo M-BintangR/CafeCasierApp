@@ -30,22 +30,22 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PenggunaForm));
             panel2 = new Panel();
+            btnBack = new Button();
+            label1 = new Label();
             btnExit = new Button();
             panel1 = new Panel();
-            label1 = new Label();
             panel3 = new Panel();
-            tableData = new DataGridView();
-            label2 = new Label();
-            txtEmail = new TextBox();
-            label3 = new Label();
-            textBox1 = new TextBox();
+            btnEdit = new Button();
+            btnHapus = new Button();
+            btnRefresh = new Button();
+            btnTambah = new Button();
             label4 = new Label();
             textBox2 = new TextBox();
-            btnTambah = new Button();
-            btnRefresh = new Button();
-            btnHapus = new Button();
-            btnEdit = new Button();
-            btnBack = new Button();
+            label3 = new Label();
+            textBox1 = new TextBox();
+            label2 = new Label();
+            txtEmail = new TextBox();
+            tableData = new DataGridView();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
@@ -63,6 +63,32 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(800, 112);
             panel2.TabIndex = 0;
+            // 
+            // btnBack
+            // 
+            btnBack.BackColor = Color.White;
+            btnBack.Cursor = Cursors.Hand;
+            btnBack.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnBack.ForeColor = Color.FromArgb(72, 23, 0);
+            btnBack.Location = new Point(644, 32);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(131, 41);
+            btnBack.TabIndex = 2;
+            btnBack.Text = "Kembali";
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(31, 34);
+            label1.Name = "label1";
+            label1.Padding = new Padding(10);
+            label1.Size = new Size(250, 50);
+            label1.TabIndex = 1;
+            label1.Text = "Kelola Data Pengguna";
+            label1.Click += label1_Click;
             // 
             // btnExit
             // 
@@ -89,18 +115,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(800, 565);
             panel1.TabIndex = 2;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(31, 34);
-            label1.Name = "label1";
-            label1.Padding = new Padding(10);
-            label1.Size = new Size(250, 50);
-            label1.TabIndex = 1;
-            label1.Text = "Kelola Data Pengguna";
-            label1.Click += label1_Click;
+            panel1.Paint += panel1_Paint;
             // 
             // panel3
             // 
@@ -121,59 +136,47 @@
             panel3.Size = new Size(727, 390);
             panel3.TabIndex = 1;
             // 
-            // tableData
+            // btnEdit
             // 
-            tableData.BackgroundColor = Color.FromArgb(72, 23, 0);
-            tableData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tableData.GridColor = SystemColors.InactiveCaption;
-            tableData.Location = new Point(335, 88);
-            tableData.Name = "tableData";
-            tableData.Size = new Size(354, 244);
-            tableData.TabIndex = 2;
+            btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEdit.Location = new Point(211, 278);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new Size(83, 44);
+            btnEdit.TabIndex = 12;
+            btnEdit.Text = "Edit";
+            btnEdit.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // btnHapus
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(30, 39);
-            label2.Name = "label2";
-            label2.RightToLeft = RightToLeft.Yes;
-            label2.Size = new Size(46, 20);
-            label2.TabIndex = 4;
-            label2.Text = "Email";
+            btnHapus.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnHapus.Location = new Point(122, 278);
+            btnHapus.Name = "btnHapus";
+            btnHapus.Size = new Size(83, 44);
+            btnHapus.TabIndex = 11;
+            btnHapus.Text = "Hapus";
+            btnHapus.UseVisualStyleBackColor = true;
             // 
-            // txtEmail
+            // btnRefresh
             // 
-            txtEmail.BackColor = SystemColors.ScrollBar;
-            txtEmail.BorderStyle = BorderStyle.None;
-            txtEmail.Font = new Font("Segoe UI", 9F);
-            txtEmail.Location = new Point(33, 64);
-            txtEmail.Multiline = true;
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(261, 36);
-            txtEmail.TabIndex = 3;
+            btnRefresh.BackColor = Color.FromArgb(72, 23, 0);
+            btnRefresh.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnRefresh.ForeColor = Color.White;
+            btnRefresh.Location = new Point(600, 28);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(89, 44);
+            btnRefresh.TabIndex = 10;
+            btnRefresh.Text = "Refresh";
+            btnRefresh.UseVisualStyleBackColor = false;
             // 
-            // label3
+            // btnTambah
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(30, 113);
-            label3.Name = "label3";
-            label3.RightToLeft = RightToLeft.Yes;
-            label3.Size = new Size(78, 20);
-            label3.TabIndex = 6;
-            label3.Text = "Username";
-            // 
-            // textBox1
-            // 
-            textBox1.BackColor = SystemColors.ScrollBar;
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("Segoe UI", 9F);
-            textBox1.Location = new Point(33, 138);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(261, 36);
-            textBox1.TabIndex = 5;
+            btnTambah.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnTambah.Location = new Point(33, 278);
+            btnTambah.Name = "btnTambah";
+            btnTambah.Size = new Size(83, 44);
+            btnTambah.TabIndex = 9;
+            btnTambah.Text = "Tambah";
+            btnTambah.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -197,61 +200,59 @@
             textBox2.Size = new Size(261, 36);
             textBox2.TabIndex = 7;
             // 
-            // btnTambah
+            // label3
             // 
-            btnTambah.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnTambah.Location = new Point(33, 278);
-            btnTambah.Name = "btnTambah";
-            btnTambah.Size = new Size(83, 44);
-            btnTambah.TabIndex = 9;
-            btnTambah.Text = "Tambah";
-            btnTambah.UseVisualStyleBackColor = true;
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(30, 113);
+            label3.Name = "label3";
+            label3.RightToLeft = RightToLeft.Yes;
+            label3.Size = new Size(78, 20);
+            label3.TabIndex = 6;
+            label3.Text = "Username";
             // 
-            // btnRefresh
+            // textBox1
             // 
-            btnRefresh.BackColor = Color.FromArgb(72, 23, 0);
-            btnRefresh.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnRefresh.ForeColor = Color.White;
-            btnRefresh.Location = new Point(600, 28);
-            btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(89, 44);
-            btnRefresh.TabIndex = 10;
-            btnRefresh.Text = "Refresh";
-            btnRefresh.UseVisualStyleBackColor = false;
+            textBox1.BackColor = SystemColors.ScrollBar;
+            textBox1.BorderStyle = BorderStyle.None;
+            textBox1.Font = new Font("Segoe UI", 9F);
+            textBox1.Location = new Point(33, 138);
+            textBox1.Multiline = true;
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(261, 36);
+            textBox1.TabIndex = 5;
             // 
-            // btnHapus
+            // label2
             // 
-            btnHapus.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnHapus.Location = new Point(122, 278);
-            btnHapus.Name = "btnHapus";
-            btnHapus.Size = new Size(83, 44);
-            btnHapus.TabIndex = 11;
-            btnHapus.Text = "Hapus";
-            btnHapus.UseVisualStyleBackColor = true;
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(30, 39);
+            label2.Name = "label2";
+            label2.RightToLeft = RightToLeft.Yes;
+            label2.Size = new Size(46, 20);
+            label2.TabIndex = 4;
+            label2.Text = "Email";
             // 
-            // btnEdit
+            // txtEmail
             // 
-            btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEdit.Location = new Point(211, 278);
-            btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(83, 44);
-            btnEdit.TabIndex = 12;
-            btnEdit.Text = "Edit";
-            btnEdit.UseVisualStyleBackColor = true;
+            txtEmail.BackColor = SystemColors.ScrollBar;
+            txtEmail.BorderStyle = BorderStyle.None;
+            txtEmail.Font = new Font("Segoe UI", 9F);
+            txtEmail.Location = new Point(33, 64);
+            txtEmail.Multiline = true;
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(261, 36);
+            txtEmail.TabIndex = 3;
             // 
-            // btnBack
+            // tableData
             // 
-            btnBack.BackColor = Color.White;
-            btnBack.Cursor = Cursors.Hand;
-            btnBack.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnBack.ForeColor = Color.FromArgb(72, 23, 0);
-            btnBack.Location = new Point(644, 32);
-            btnBack.Name = "btnBack";
-            btnBack.Size = new Size(131, 41);
-            btnBack.TabIndex = 2;
-            btnBack.Text = "Kembali";
-            btnBack.UseVisualStyleBackColor = false;
-            btnBack.Click += btnBack_Click;
+            tableData.BackgroundColor = Color.FromArgb(72, 23, 0);
+            tableData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            tableData.GridColor = SystemColors.InactiveCaption;
+            tableData.Location = new Point(335, 88);
+            tableData.Name = "tableData";
+            tableData.Size = new Size(354, 244);
+            tableData.TabIndex = 2;
             // 
             // PenggunaForm
             // 
