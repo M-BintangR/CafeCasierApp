@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PembayaranForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PesananForm));
             txtJumlahPesanan = new TextBox();
             label4 = new Label();
             txtHarga = new TextBox();
@@ -61,12 +61,13 @@
             // 
             txtJumlahPesanan.BackColor = SystemColors.ScrollBar;
             txtJumlahPesanan.BorderStyle = BorderStyle.None;
-            txtJumlahPesanan.Font = new Font("Segoe UI", 9F);
+            txtJumlahPesanan.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtJumlahPesanan.Location = new Point(33, 140);
             txtJumlahPesanan.Multiline = true;
             txtJumlahPesanan.Name = "txtJumlahPesanan";
             txtJumlahPesanan.Size = new Size(261, 36);
             txtJumlahPesanan.TabIndex = 17;
+            txtJumlahPesanan.TextChanged += txtJumlahPesanan_TextChanged;
             // 
             // label4
             // 
@@ -83,12 +84,13 @@
             // 
             txtHarga.BackColor = SystemColors.ScrollBar;
             txtHarga.BorderStyle = BorderStyle.None;
-            txtHarga.Font = new Font("Segoe UI", 9F);
+            txtHarga.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             txtHarga.Location = new Point(33, 214);
             txtHarga.Multiline = true;
             txtHarga.Name = "txtHarga";
             txtHarga.Size = new Size(261, 36);
             txtHarga.TabIndex = 15;
+            txtHarga.TextChanged += txtHarga_TextChanged;
             // 
             // label3
             // 
@@ -104,22 +106,24 @@
             // btnEdit
             // 
             btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEdit.Location = new Point(211, 357);
+            btnEdit.Location = new Point(123, 357);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(83, 44);
             btnEdit.TabIndex = 12;
             btnEdit.Text = "Edit";
             btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
             // 
             // btnHapus
             // 
             btnHapus.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnHapus.Location = new Point(122, 357);
+            btnHapus.Location = new Point(211, 357);
             btnHapus.Name = "btnHapus";
             btnHapus.Size = new Size(83, 44);
             btnHapus.TabIndex = 11;
             btnHapus.Text = "Hapus";
             btnHapus.UseVisualStyleBackColor = true;
+            btnHapus.Click += btnHapus_Click;
             // 
             // btnRefresh
             // 
@@ -132,6 +136,7 @@
             btnRefresh.TabIndex = 10;
             btnRefresh.Text = "Refresh";
             btnRefresh.UseVisualStyleBackColor = false;
+            btnRefresh.Click += btnRefresh_Click;
             // 
             // btnTambah
             // 
@@ -142,6 +147,7 @@
             btnTambah.TabIndex = 9;
             btnTambah.Text = "Tambah";
             btnTambah.UseVisualStyleBackColor = true;
+            btnTambah.Click += btnTambah_Click;
             // 
             // tableData
             // 
@@ -152,6 +158,7 @@
             tableData.Name = "tableData";
             tableData.Size = new Size(354, 247);
             tableData.TabIndex = 2;
+            tableData.CellContentClick += tableData_CellContentClick;
             // 
             // panel1
             // 
@@ -203,12 +210,13 @@
             // 
             txtTotalHarga.BackColor = SystemColors.ScrollBar;
             txtTotalHarga.BorderStyle = BorderStyle.None;
-            txtTotalHarga.Font = new Font("Segoe UI", 9F);
+            txtTotalHarga.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             txtTotalHarga.Location = new Point(33, 291);
             txtTotalHarga.Multiline = true;
             txtTotalHarga.Name = "txtTotalHarga";
             txtTotalHarga.Size = new Size(261, 36);
             txtTotalHarga.TabIndex = 23;
+            txtTotalHarga.TextChanged += txtTotalHarga_TextChanged;
             // 
             // label7
             // 
@@ -228,6 +236,7 @@
             cmbMenu.Name = "cmbMenu";
             cmbMenu.Size = new Size(261, 23);
             cmbMenu.TabIndex = 21;
+            cmbMenu.SelectedIndexChanged += cmbMenu_SelectedIndexChanged;
             // 
             // label6
             // 
@@ -257,6 +266,7 @@
             cmbPelanggan.Name = "cmbPelanggan";
             cmbPelanggan.Size = new Size(354, 23);
             cmbPelanggan.TabIndex = 18;
+            cmbPelanggan.SelectedIndexChanged += cmbPelanggan_SelectedIndexChanged;
             // 
             // panel2
             // 
