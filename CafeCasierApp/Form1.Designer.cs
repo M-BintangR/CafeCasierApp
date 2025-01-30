@@ -117,7 +117,7 @@
             // 
             txtPassword.BackColor = SystemColors.ScrollBar;
             txtPassword.BorderStyle = BorderStyle.None;
-            txtPassword.Font = new Font("Segoe UI", 9F);
+            txtPassword.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             txtPassword.Location = new Point(25, 241);
             txtPassword.Multiline = true;
             txtPassword.Name = "txtPassword";
@@ -140,7 +140,7 @@
             // 
             txtEmail.BackColor = SystemColors.ScrollBar;
             txtEmail.BorderStyle = BorderStyle.None;
-            txtEmail.Font = new Font("Segoe UI", 9F);
+            txtEmail.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtEmail.Location = new Point(25, 153);
             txtEmail.Multiline = true;
             txtEmail.Name = "txtEmail";

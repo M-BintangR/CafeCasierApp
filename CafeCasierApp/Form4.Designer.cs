@@ -35,14 +35,16 @@
             btnExit = new Button();
             panel1 = new Panel();
             panel3 = new Panel();
+            label5 = new Label();
+            cmbPeran = new ComboBox();
             btnEdit = new Button();
             btnHapus = new Button();
             btnRefresh = new Button();
             btnTambah = new Button();
             label4 = new Label();
-            textBox2 = new TextBox();
+            txtPassword = new TextBox();
             label3 = new Label();
-            textBox1 = new TextBox();
+            txtUsername = new TextBox();
             label2 = new Label();
             txtEmail = new TextBox();
             tableData = new DataGridView();
@@ -88,7 +90,6 @@
             label1.Size = new Size(250, 50);
             label1.TabIndex = 1;
             label1.Text = "Kelola Data Pengguna";
-            label1.Click += label1_Click;
             // 
             // btnExit
             // 
@@ -113,33 +114,54 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 565);
+            panel1.Size = new Size(800, 595);
             panel1.TabIndex = 2;
-            panel1.Paint += panel1_Paint;
             // 
             // panel3
             // 
             panel3.BackColor = Color.White;
+            panel3.Controls.Add(label5);
+            panel3.Controls.Add(cmbPeran);
             panel3.Controls.Add(btnEdit);
             panel3.Controls.Add(btnHapus);
             panel3.Controls.Add(btnRefresh);
             panel3.Controls.Add(btnTambah);
             panel3.Controls.Add(label4);
-            panel3.Controls.Add(textBox2);
+            panel3.Controls.Add(txtPassword);
             panel3.Controls.Add(label3);
-            panel3.Controls.Add(textBox1);
+            panel3.Controls.Add(txtUsername);
             panel3.Controls.Add(label2);
             panel3.Controls.Add(txtEmail);
             panel3.Controls.Add(tableData);
             panel3.Location = new Point(31, 146);
             panel3.Name = "panel3";
-            panel3.Size = new Size(727, 390);
+            panel3.Size = new Size(727, 420);
             panel3.TabIndex = 1;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(30, 265);
+            label5.Name = "label5";
+            label5.RightToLeft = RightToLeft.Yes;
+            label5.Size = new Size(48, 20);
+            label5.TabIndex = 14;
+            label5.Text = "Peran";
+            // 
+            // cmbPeran
+            // 
+            cmbPeran.FormattingEnabled = true;
+            cmbPeran.Location = new Point(33, 288);
+            cmbPeran.Name = "cmbPeran";
+            cmbPeran.Size = new Size(261, 23);
+            cmbPeran.TabIndex = 13;
+            cmbPeran.SelectedIndexChanged += cmbPeran_SelectedIndexChanged;
             // 
             // btnEdit
             // 
             btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEdit.Location = new Point(211, 278);
+            btnEdit.Location = new Point(211, 328);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(83, 44);
             btnEdit.TabIndex = 12;
@@ -149,7 +171,7 @@
             // btnHapus
             // 
             btnHapus.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnHapus.Location = new Point(122, 278);
+            btnHapus.Location = new Point(122, 328);
             btnHapus.Name = "btnHapus";
             btnHapus.Size = new Size(83, 44);
             btnHapus.TabIndex = 11;
@@ -171,12 +193,13 @@
             // btnTambah
             // 
             btnTambah.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnTambah.Location = new Point(33, 278);
+            btnTambah.Location = new Point(33, 328);
             btnTambah.Name = "btnTambah";
             btnTambah.Size = new Size(83, 44);
             btnTambah.TabIndex = 9;
             btnTambah.Text = "Tambah";
             btnTambah.UseVisualStyleBackColor = true;
+            btnTambah.Click += btnTambah_Click;
             // 
             // label4
             // 
@@ -189,16 +212,17 @@
             label4.TabIndex = 8;
             label4.Text = "Password";
             // 
-            // textBox2
+            // txtPassword
             // 
-            textBox2.BackColor = SystemColors.ScrollBar;
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Font = new Font("Segoe UI", 9F);
-            textBox2.Location = new Point(33, 214);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(261, 36);
-            textBox2.TabIndex = 7;
+            txtPassword.BackColor = SystemColors.ScrollBar;
+            txtPassword.BorderStyle = BorderStyle.None;
+            txtPassword.Font = new Font("Segoe UI", 9F);
+            txtPassword.Location = new Point(33, 214);
+            txtPassword.Multiline = true;
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new Size(261, 36);
+            txtPassword.TabIndex = 7;
+            txtPassword.TextChanged += txtPassword_TextChanged;
             // 
             // label3
             // 
@@ -211,16 +235,17 @@
             label3.TabIndex = 6;
             label3.Text = "Username";
             // 
-            // textBox1
+            // txtUsername
             // 
-            textBox1.BackColor = SystemColors.ScrollBar;
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("Segoe UI", 9F);
-            textBox1.Location = new Point(33, 138);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(261, 36);
-            textBox1.TabIndex = 5;
+            txtUsername.BackColor = SystemColors.ScrollBar;
+            txtUsername.BorderStyle = BorderStyle.None;
+            txtUsername.Font = new Font("Segoe UI", 9F);
+            txtUsername.Location = new Point(33, 138);
+            txtUsername.Multiline = true;
+            txtUsername.Name = "txtUsername";
+            txtUsername.Size = new Size(261, 36);
+            txtUsername.TabIndex = 5;
+            txtUsername.TextChanged += txtUsername_TextChanged;
             // 
             // label2
             // 
@@ -243,6 +268,7 @@
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(261, 36);
             txtEmail.TabIndex = 3;
+            txtEmail.TextChanged += txtEmail_TextChanged;
             // 
             // tableData
             // 
@@ -251,14 +277,14 @@
             tableData.GridColor = SystemColors.InactiveCaption;
             tableData.Location = new Point(335, 88);
             tableData.Name = "tableData";
-            tableData.Size = new Size(354, 244);
+            tableData.Size = new Size(354, 284);
             tableData.TabIndex = 2;
             // 
             // PenggunaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 565);
+            ClientSize = new Size(800, 595);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "PenggunaForm";
@@ -282,9 +308,9 @@
         private Panel panel3;
         private DataGridView tableData;
         private Label label4;
-        private TextBox textBox2;
+        private TextBox txtPassword;
         private Label label3;
-        private TextBox textBox1;
+        private TextBox txtUsername;
         private Label label2;
         private TextBox txtEmail;
         private Button btnEdit;
@@ -292,5 +318,7 @@
         private Button btnRefresh;
         private Button btnTambah;
         private Button btnBack;
+        private Label label5;
+        private ComboBox cmbPeran;
     }
 }
