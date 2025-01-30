@@ -161,7 +161,7 @@
             // btnEdit
             // 
             btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEdit.Location = new Point(211, 328);
+            btnEdit.Location = new Point(122, 328);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(83, 44);
             btnEdit.TabIndex = 12;
@@ -172,7 +172,7 @@
             // btnHapus
             // 
             btnHapus.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnHapus.Location = new Point(122, 328);
+            btnHapus.Location = new Point(211, 328);
             btnHapus.Name = "btnHapus";
             btnHapus.Size = new Size(83, 44);
             btnHapus.TabIndex = 11;
@@ -219,7 +219,7 @@
             // 
             txtPassword.BackColor = SystemColors.ScrollBar;
             txtPassword.BorderStyle = BorderStyle.None;
-            txtPassword.Font = new Font("Segoe UI", 9F);
+            txtPassword.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             txtPassword.Location = new Point(33, 214);
             txtPassword.Multiline = true;
             txtPassword.Name = "txtPassword";
@@ -242,7 +242,7 @@
             // 
             txtUsername.BackColor = SystemColors.ScrollBar;
             txtUsername.BorderStyle = BorderStyle.None;
-            txtUsername.Font = new Font("Segoe UI", 9F);
+            txtUsername.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             txtUsername.Location = new Point(33, 138);
             txtUsername.Multiline = true;
             txtUsername.Name = "txtUsername";
@@ -265,7 +265,7 @@
             // 
             txtEmail.BackColor = SystemColors.ScrollBar;
             txtEmail.BorderStyle = BorderStyle.None;
-            txtEmail.Font = new Font("Segoe UI", 9F);
+            txtEmail.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtEmail.Location = new Point(33, 64);
             txtEmail.Multiline = true;
             txtEmail.Name = "txtEmail";

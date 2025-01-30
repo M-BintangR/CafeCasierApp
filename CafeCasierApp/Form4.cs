@@ -8,7 +8,7 @@ namespace CafeCasierApp
     {
         private readonly Koneksi koneksi;
         private DataTable dataTable;
-        private string email, password, username, role;
+        private string email, password, username, role, idUser;
         public PenggunaForm()
         {
             InitializeComponent();
@@ -93,6 +93,7 @@ namespace CafeCasierApp
             this.email = "";
             this.password = "";
             this.role = "";
+            this.idUser = "";
 
             txtEmail.Text = "";
             txtPassword.Text = "";
@@ -106,7 +107,7 @@ namespace CafeCasierApp
 
         private void btnTambah_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(username))
+            if (string.IsNullOrWhiteSpace(this.email) || string.IsNullOrWhiteSpace(this.password) || string.IsNullOrWhiteSpace(this.username))
             {
                 MessageBox.Show("Semua field harus diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -119,10 +120,10 @@ namespace CafeCasierApp
 
                 using (MySqlCommand cmd = new MySqlCommand(query, koneksi.GetConnection()))
                 {
-                    cmd.Parameters.AddWithValue("@Email", email);
-                    cmd.Parameters.AddWithValue("@Password", password);
-                    cmd.Parameters.AddWithValue("@Username", username);
-                    cmd.Parameters.AddWithValue("@Role", role);
+                    cmd.Parameters.AddWithValue("@Email", this.email);
+                    cmd.Parameters.AddWithValue("@Password", this.password);
+                    cmd.Parameters.AddWithValue("@Username", this.username);
+                    cmd.Parameters.AddWithValue("@Role", this.role);
 
                     int rowsAffected = cmd.ExecuteNonQuery();
                     if (rowsAffected > 0)
@@ -160,6 +161,7 @@ namespace CafeCasierApp
                 this.email = row.Cells["email"].Value.ToString() ?? "";
                 this.username = row.Cells["username"].Value.ToString() ?? "";
                 this.role = row.Cells["role"].Value.ToString() ?? "";
+                this.idUser = row.Cells["id_user"].Value.ToString() ?? "";
 
                 txtEmail.Text = this.email;
                 txtUsername.Text = this.username;
@@ -187,11 +189,11 @@ namespace CafeCasierApp
                 try
                 {
                     koneksi.openConnection();
-                    string query = "DELETE FROM users WHERE email = @Email";
+                    string query = "DELETE FROM users WHERE id_user = @IdUser";
 
                     using (MySqlCommand cmd = new MySqlCommand(query, koneksi.GetConnection()))
                     {
-                        cmd.Parameters.AddWithValue("@Email", email);
+                        cmd.Parameters.AddWithValue("@Iduser", this.idUser);
                         int rowsAffected = cmd.ExecuteNonQuery();
 
                         if (rowsAffected > 0)
@@ -219,7 +221,7 @@ namespace CafeCasierApp
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(username))
+            if (string.IsNullOrWhiteSpace(this.email) || string.IsNullOrWhiteSpace(this.username))
             {
                 MessageBox.Show("Email dan Username tidak boleh kosong!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -230,24 +232,25 @@ namespace CafeCasierApp
                 koneksi.openConnection();
 
                 string query;
-                if (!string.IsNullOrWhiteSpace(password))
+                if (!string.IsNullOrWhiteSpace(this.password))
                 {
-                    query = "UPDATE users SET username = @Username, role = @Role, password = @Password WHERE email = @Email";
+                    query = "UPDATE users SET username = @Username, role = @Role, password = @Password WHERE id_user = @IdUser";
                 }
                 else
                 {
-                    query = "UPDATE users SET username = @Username, role = @Role WHERE email = @Email";
+                    query = "UPDATE users SET username = @Username, role = @Role WHERE id_user = @IdUser";
                 }
 
                 using (MySqlCommand cmd = new MySqlCommand(query, koneksi.GetConnection()))
                 {
-                    cmd.Parameters.AddWithValue("@Email", email);
-                    cmd.Parameters.AddWithValue("@Username", username);
-                    cmd.Parameters.AddWithValue("@Role", role);
+                    cmd.Parameters.AddWithValue("@Email", this.email);
+                    cmd.Parameters.AddWithValue("@Username", this.username);
+                    cmd.Parameters.AddWithValue("@Role", this.role);
+                    cmd.Parameters.AddWithValue("@IdUser", this.idUser);
 
-                    if (!string.IsNullOrWhiteSpace(password))
+                    if (!string.IsNullOrWhiteSpace(this.password))
                     {
-                        cmd.Parameters.AddWithValue("@Password", password);
+                        cmd.Parameters.AddWithValue("@Password", this.password);
                     }
 
                     int rowsAffected = cmd.ExecuteNonQuery();

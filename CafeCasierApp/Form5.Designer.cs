@@ -55,7 +55,7 @@
             // btnEdit
             // 
             btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEdit.Location = new Point(214, 308);
+            btnEdit.Location = new Point(124, 308);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(83, 44);
             btnEdit.TabIndex = 12;
@@ -66,7 +66,7 @@
             // btnHapus
             // 
             btnHapus.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnHapus.Location = new Point(125, 308);
+            btnHapus.Location = new Point(211, 308);
             btnHapus.Name = "btnHapus";
             btnHapus.Size = new Size(83, 44);
             btnHapus.TabIndex = 11;
@@ -113,7 +113,7 @@
             // 
             txtNamaMenu.BackColor = SystemColors.ScrollBar;
             txtNamaMenu.BorderStyle = BorderStyle.None;
-            txtNamaMenu.Font = new Font("Segoe UI", 9F);
+            txtNamaMenu.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             txtNamaMenu.Location = new Point(33, 64);
             txtNamaMenu.Multiline = true;
             txtNamaMenu.Name = "txtNamaMenu";
@@ -217,7 +217,7 @@
             // 
             txtKeterangan.BackColor = SystemColors.ScrollBar;
             txtKeterangan.BorderStyle = BorderStyle.None;
-            txtKeterangan.Font = new Font("Segoe UI", 9F);
+            txtKeterangan.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             txtKeterangan.Location = new Point(33, 219);
             txtKeterangan.Multiline = true;
             txtKeterangan.Name = "txtKeterangan";
@@ -240,7 +240,7 @@
             // 
             txtHarga.BackColor = SystemColors.ScrollBar;
             txtHarga.BorderStyle = BorderStyle.None;
-            txtHarga.Font = new Font("Segoe UI", 9F);
+            txtHarga.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             txtHarga.Location = new Point(33, 142);
             txtHarga.Multiline = true;
             txtHarga.Name = "txtHarga";
