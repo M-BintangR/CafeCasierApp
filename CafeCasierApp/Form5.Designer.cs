@@ -61,6 +61,7 @@
             btnEdit.TabIndex = 12;
             btnEdit.Text = "Edit";
             btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
             // 
             // btnHapus
             // 
@@ -71,6 +72,7 @@
             btnHapus.TabIndex = 11;
             btnHapus.Text = "Hapus";
             btnHapus.UseVisualStyleBackColor = true;
+            btnHapus.Click += btnHapus_Click;
             // 
             // btnRefresh
             // 
@@ -83,6 +85,7 @@
             btnRefresh.TabIndex = 10;
             btnRefresh.Text = "Refresh";
             btnRefresh.UseVisualStyleBackColor = false;
+            btnRefresh.Click += btnRefresh_Click;
             // 
             // btnTambah
             // 
@@ -93,6 +96,7 @@
             btnTambah.TabIndex = 9;
             btnTambah.Text = "Tambah";
             btnTambah.UseVisualStyleBackColor = true;
+            btnTambah.Click += btnTambah_Click;
             // 
             // label2
             // 
@@ -115,6 +119,7 @@
             txtNamaMenu.Name = "txtNamaMenu";
             txtNamaMenu.Size = new Size(261, 36);
             txtNamaMenu.TabIndex = 3;
+            txtNamaMenu.TextChanged += txtNamaMenu_TextChanged;
             // 
             // tableData
             // 
@@ -125,6 +130,7 @@
             tableData.Name = "tableData";
             tableData.Size = new Size(354, 264);
             tableData.TabIndex = 2;
+            tableData.CellContentClick += tableData_CellContentClick;
             // 
             // btnBack
             // 
@@ -217,6 +223,7 @@
             txtKeterangan.Name = "txtKeterangan";
             txtKeterangan.Size = new Size(261, 68);
             txtKeterangan.TabIndex = 15;
+            txtKeterangan.TextChanged += txtKeterangan_TextChanged;
             // 
             // label3
             // 
@@ -239,6 +246,7 @@
             txtHarga.Name = "txtHarga";
             txtHarga.Size = new Size(261, 36);
             txtHarga.TabIndex = 13;
+            txtHarga.TextChanged += txtHarga_TextChanged;
             // 
             // panel2
             // 
