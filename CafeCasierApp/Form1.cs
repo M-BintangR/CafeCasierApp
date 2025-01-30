@@ -34,6 +34,7 @@ namespace CafeCasierApp
             else
             {
                 MessageBox.Show("Ada yang salah, anda tidak dapat login, cek kembali password & email anda", "Pesan kesalahan");
+                new LoginForm().Show();
             }
 
             this.Hide();
