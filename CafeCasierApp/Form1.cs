@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace CafeCasierApp
 {
     public partial class LoginForm : Form
@@ -27,17 +25,15 @@ namespace CafeCasierApp
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if(this.email == "admin@gmail.com" && this.password == "adminadmin")
-            {
-                new AdminPanelForm().Show();
+            Login login = new Login(this.email, this.password);
 
-            }else if(this.email == "kasir@gmail.com" && this.password == "kasirkasir")
+            if (login.VerifyLogin())
             {
-                new KasirPanelForm().Show();
+                MessageBox.Show("Anda berhasil login!", "Berhasil");
             }
             else
             {
-                MessageBox.Show("Ada yang salah : password atau email anda salah!", "Terjadi Kesalahan");
+                MessageBox.Show("Ada yang salah, anda tidak dapat login, cek kembali password & email anda", "Pesan kesalahan");
             }
 
             this.Hide();
