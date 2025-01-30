@@ -149,12 +149,13 @@
             // 
             txtNomorMeja.BackColor = SystemColors.ScrollBar;
             txtNomorMeja.BorderStyle = BorderStyle.None;
-            txtNomorMeja.Font = new Font("Segoe UI", 9F);
+            txtNomorMeja.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             txtNomorMeja.Location = new Point(33, 140);
             txtNomorMeja.Multiline = true;
             txtNomorMeja.Name = "txtNomorMeja";
             txtNomorMeja.Size = new Size(261, 36);
             txtNomorMeja.TabIndex = 17;
+            txtNomorMeja.TextChanged += txtNomorMeja_TextChanged;
             // 
             // label4
             // 
@@ -171,32 +172,35 @@
             // 
             txtNomorLantai.BackColor = SystemColors.ScrollBar;
             txtNomorLantai.BorderStyle = BorderStyle.None;
-            txtNomorLantai.Font = new Font("Segoe UI", 9F);
+            txtNomorLantai.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             txtNomorLantai.Location = new Point(33, 220);
             txtNomorLantai.Multiline = true;
             txtNomorLantai.Name = "txtNomorLantai";
             txtNomorLantai.Size = new Size(261, 36);
             txtNomorLantai.TabIndex = 15;
+            txtNomorLantai.TextChanged += txtNomorLantai_TextChanged;
             // 
             // btnEdit
             // 
             btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEdit.Location = new Point(211, 279);
+            btnEdit.Location = new Point(122, 279);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(83, 44);
             btnEdit.TabIndex = 12;
             btnEdit.Text = "Edit";
             btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
             // 
             // btnHapus
             // 
             btnHapus.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnHapus.Location = new Point(122, 279);
+            btnHapus.Location = new Point(211, 279);
             btnHapus.Name = "btnHapus";
             btnHapus.Size = new Size(83, 44);
             btnHapus.TabIndex = 11;
             btnHapus.Text = "Hapus";
             btnHapus.UseVisualStyleBackColor = true;
+            btnHapus.Click += btnHapus_Click;
             // 
             // btnRefresh
             // 
@@ -209,6 +213,7 @@
             btnRefresh.TabIndex = 10;
             btnRefresh.Text = "Refresh";
             btnRefresh.UseVisualStyleBackColor = false;
+            btnRefresh.Click += btnRefresh_Click;
             // 
             // btnTambah
             // 
@@ -219,6 +224,7 @@
             btnTambah.TabIndex = 9;
             btnTambah.Text = "Tambah";
             btnTambah.UseVisualStyleBackColor = true;
+            btnTambah.Click += btnTambah_Click;
             // 
             // label2
             // 
@@ -235,12 +241,13 @@
             // 
             txtNamaPelanggan.BackColor = SystemColors.ScrollBar;
             txtNamaPelanggan.BorderStyle = BorderStyle.None;
-            txtNamaPelanggan.Font = new Font("Segoe UI", 9F);
+            txtNamaPelanggan.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtNamaPelanggan.Location = new Point(33, 64);
             txtNamaPelanggan.Multiline = true;
             txtNamaPelanggan.Name = "txtNamaPelanggan";
             txtNamaPelanggan.Size = new Size(261, 36);
             txtNamaPelanggan.TabIndex = 3;
+            txtNamaPelanggan.TextChanged += txtNamaPelanggan_TextChanged;
             // 
             // tableData
             // 
@@ -251,6 +258,7 @@
             tableData.Name = "tableData";
             tableData.Size = new Size(354, 235);
             tableData.TabIndex = 2;
+            tableData.CellContentClick += tableData_CellContentClick;
             // 
             // PelangganForm
             // 
