@@ -51,6 +51,8 @@
             btnBack = new Button();
             label1 = new Label();
             btnExit = new Button();
+            label8 = new Label();
+            label9 = new Label();
             ((System.ComponentModel.ISupportInitialize)tableData).BeginInit();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
@@ -73,7 +75,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(30, 189);
+            label4.Location = new Point(30, 193);
             label4.Name = "label4";
             label4.RightToLeft = RightToLeft.Yes;
             label4.Size = new Size(51, 20);
@@ -85,7 +87,7 @@
             txtHarga.BackColor = SystemColors.ScrollBar;
             txtHarga.BorderStyle = BorderStyle.None;
             txtHarga.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            txtHarga.Location = new Point(33, 214);
+            txtHarga.Location = new Point(33, 218);
             txtHarga.Multiline = true;
             txtHarga.Name = "txtHarga";
             txtHarga.Size = new Size(261, 36);
@@ -106,7 +108,7 @@
             // btnEdit
             // 
             btnEdit.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEdit.Location = new Point(123, 357);
+            btnEdit.Location = new Point(124, 396);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(83, 44);
             btnEdit.TabIndex = 12;
@@ -117,7 +119,7 @@
             // btnHapus
             // 
             btnHapus.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnHapus.Location = new Point(211, 357);
+            btnHapus.Location = new Point(212, 396);
             btnHapus.Name = "btnHapus";
             btnHapus.Size = new Size(83, 44);
             btnHapus.TabIndex = 11;
@@ -141,7 +143,7 @@
             // btnTambah
             // 
             btnTambah.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnTambah.Location = new Point(33, 357);
+            btnTambah.Location = new Point(34, 396);
             btnTambah.Name = "btnTambah";
             btnTambah.Size = new Size(83, 44);
             btnTambah.TabIndex = 9;
@@ -156,7 +158,7 @@
             tableData.GridColor = SystemColors.InactiveCaption;
             tableData.Location = new Point(335, 154);
             tableData.Name = "tableData";
-            tableData.Size = new Size(354, 247);
+            tableData.Size = new Size(354, 286);
             tableData.TabIndex = 2;
             tableData.CellContentClick += tableData_CellContentClick;
             // 
@@ -168,12 +170,14 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 648);
+            panel1.Size = new Size(800, 660);
             panel1.TabIndex = 5;
             // 
             // panel3
             // 
             panel3.BackColor = Color.White;
+            panel3.Controls.Add(label9);
+            panel3.Controls.Add(label8);
             panel3.Controls.Add(label2);
             panel3.Controls.Add(txtTotalHarga);
             panel3.Controls.Add(label7);
@@ -192,14 +196,14 @@
             panel3.Controls.Add(tableData);
             panel3.Location = new Point(31, 146);
             panel3.Name = "panel3";
-            panel3.Size = new Size(727, 451);
+            panel3.Size = new Size(727, 485);
             panel3.TabIndex = 1;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(30, 266);
+            label2.Location = new Point(30, 287);
             label2.Name = "label2";
             label2.RightToLeft = RightToLeft.Yes;
             label2.Size = new Size(88, 20);
@@ -211,7 +215,7 @@
             txtTotalHarga.BackColor = SystemColors.ScrollBar;
             txtTotalHarga.BorderStyle = BorderStyle.None;
             txtTotalHarga.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            txtTotalHarga.Location = new Point(33, 291);
+            txtTotalHarga.Location = new Point(33, 312);
             txtTotalHarga.Multiline = true;
             txtTotalHarga.Name = "txtTotalHarga";
             txtTotalHarga.Size = new Size(261, 36);
@@ -320,11 +324,31 @@
             btnExit.UseVisualStyleBackColor = false;
             btnExit.Click += btnExit_Click;
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.ForeColor = Color.FromArgb(64, 64, 64);
+            label8.Location = new Point(33, 257);
+            label8.Name = "label8";
+            label8.Size = new Size(140, 15);
+            label8.TabIndex = 25;
+            label8.Text = "Data akan otomatis terisi!";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.ForeColor = Color.FromArgb(64, 64, 64);
+            label9.Location = new Point(33, 351);
+            label9.Name = "label9";
+            label9.Size = new Size(140, 15);
+            label9.TabIndex = 26;
+            label9.Text = "Data akan otomatis terisi!";
+            // 
             // PesananForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 648);
+            ClientSize = new Size(800, 660);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "PesananForm";
@@ -363,5 +387,7 @@
         private ComboBox cmbPelanggan;
         private Label label2;
         private TextBox txtTotalHarga;
+        private Label label9;
+        private Label label8;
     }
 }

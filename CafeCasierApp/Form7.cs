@@ -26,6 +26,14 @@ namespace CafeCasierApp
             this.btnTambah.Enabled = true;
             this.btnEdit.Enabled = false;
             this.btnHapus.Enabled = false;
+
+            this.txtHarga.Enabled = false;
+            this.txtTotalHarga.Enabled = false;
+
+            txtTotalHarga.Text = "0";
+            txtHarga.Text = "0";
+            this.price = "0";
+            this.totalPrice = "0";
         }
 
         private void resetData()
@@ -46,6 +54,14 @@ namespace CafeCasierApp
             this.btnTambah.Enabled = true;
             this.btnEdit.Enabled = false;
             this.btnHapus.Enabled = false;
+
+            this.txtHarga.Enabled = false;
+            this.txtTotalHarga.Enabled = false;
+
+            txtTotalHarga.Text = "0";
+            txtHarga.Text = "0";
+            this.price = "0";
+            this.totalPrice = "0";
         }
 
         private void LoadDataMenu()
@@ -158,6 +174,43 @@ namespace CafeCasierApp
             }
         }
 
+        private void detailMenu(string idMenu)
+        {
+            try
+            {
+                koneksi.openConnection();
+
+                string query = @"SELECT * FROM menu
+                        WHERE id_menu = @ID";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, koneksi.GetConnection()))
+                {
+                    cmd.Parameters.AddWithValue("@ID", idMenu);
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                    {
+                        dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        if (dataTable.Rows.Count > 0)
+                        {
+                            this.price = dataTable.Rows[0]["harga"].ToString() ?? "0";
+                            txtHarga.Text = this.price;
+                        }
+                    }
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show($"Gagal memuat data pengguna: {err.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine($"Error: {err.Message}");
+            }
+            finally
+            {
+                koneksi.CloseConnection();
+            }
+        }
+
         private void label3_Click(object sender, EventArgs e)
         {
 
@@ -193,16 +246,47 @@ namespace CafeCasierApp
         private void tableData_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+            this.btnTambah.Enabled = false;
+            this.btnEdit.Enabled = true;
+            this.btnHapus.Enabled = true;
+
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = tableData.Rows[e.RowIndex];
+
+                this.price = row.Cells["harga"].Value?.ToString() ?? "0";
+                this.idMenu = row.Cells["id_menu"].Value?.ToString() ?? "";
+                this.idPelanggan = row.Cells["id_pesanan"].Value?.ToString() ?? "";
+                this.totalOrder = row.Cells["jumlah"].Value?.ToString() ?? "0";
+                txtJumlahPesanan.Text = this.totalOrder;
+                txtHarga.Text = this.price;
+                calculateOrderPrice();
+            }
+
+        }
+
+        private void calculateOrderPrice()
+        {
+            int harga = 0, jumlah = 0;
+
+            int.TryParse(this.price, out harga);
+            int.TryParse(this.totalOrder, out jumlah);
+
+            this.totalPrice = (harga * jumlah).ToString();
+            txtTotalHarga.Text = this.totalPrice;
         }
 
         private void cmbMenu_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.idMenu = cmbMenu.SelectedValue?.ToString() ?? "";
+            detailMenu(this.idMenu);
+            calculateOrderPrice();
         }
 
         private void txtJumlahPesanan_TextChanged(object sender, EventArgs e)
         {
             this.totalOrder = txtJumlahPesanan.Text;
+            calculateOrderPrice();
         }
 
         private void txtHarga_TextChanged(object sender, EventArgs e)
