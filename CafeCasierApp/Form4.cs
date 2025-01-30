@@ -20,9 +20,9 @@ namespace CafeCasierApp
             this.cmbPeran.Items.Add("kasir");
             this.cmbPeran.SelectedIndex = 0;
 
-            this.btnTambah.Visible = true;
-            this.btnEdit.Visible = false;
-            this.btnHapus.Visible = false;
+            this.btnTambah.Enabled = true;
+            this.btnEdit.Enabled = false;
+            this.btnHapus.Enabled = false;
         }
 
         public void LoadDataPengguna()
@@ -38,7 +38,7 @@ namespace CafeCasierApp
                     {
                         dataTable = new DataTable();
                         adapter.Fill(dataTable);
-                        tableData.DataSource = dataTable; // Menampilkan data di DataGridView
+                        tableData.DataSource = dataTable;
                     }
                 }
             }
@@ -99,9 +99,9 @@ namespace CafeCasierApp
             txtUsername.Text = "";
             cmbPeran.SelectedIndex = 0;
 
-            this.btnTambah.Visible = true;
-            this.btnEdit.Visible = false;
-            this.btnHapus.Visible = false;
+            this.btnTambah.Enabled = true;
+            this.btnEdit.Enabled = false;
+            this.btnHapus.Enabled = false;
         }
 
         private void btnTambah_Click(object sender, EventArgs e)
@@ -139,6 +139,133 @@ namespace CafeCasierApp
             catch (Exception err)
             {
                 MessageBox.Show($"Gagal menambah pengguna: {err.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine($"Error: {err.Message}");
+            }
+            finally
+            {
+                koneksi.CloseConnection();
+            }
+        }
+
+        private void tableData_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.btnTambah.Enabled = false;
+            this.btnEdit.Enabled = true;
+            this.btnHapus.Enabled = true;
+
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = tableData.Rows[e.RowIndex];
+
+                this.email = row.Cells["email"].Value.ToString() ?? "";
+                this.username = row.Cells["username"].Value.ToString() ?? "";
+                this.role = row.Cells["role"].Value.ToString() ?? "";
+
+                txtEmail.Text = this.email;
+                txtUsername.Text = this.username;
+                cmbPeran.SelectedItem = this.role;
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            resetData();
+        }
+
+        private void btnHapus_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                MessageBox.Show("Pilih pengguna yang ingin dihapus!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult result = MessageBox.Show($"Apakah Anda yakin ingin menghapus pengguna {username}?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    koneksi.openConnection();
+                    string query = "DELETE FROM users WHERE email = @Email";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, koneksi.GetConnection()))
+                    {
+                        cmd.Parameters.AddWithValue("@Email", email);
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Pengguna berhasil dihapus!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            resetData();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Gagal menghapus pengguna!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show($"Gagal menghapus pengguna: {err.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine($"Error: {err.Message}");
+                }
+                finally
+                {
+                    koneksi.CloseConnection();
+                }
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(username))
+            {
+                MessageBox.Show("Email dan Username tidak boleh kosong!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                koneksi.openConnection();
+
+                string query;
+                if (!string.IsNullOrWhiteSpace(password))
+                {
+                    query = "UPDATE users SET username = @Username, role = @Role, password = @Password WHERE email = @Email";
+                }
+                else
+                {
+                    query = "UPDATE users SET username = @Username, role = @Role WHERE email = @Email";
+                }
+
+                using (MySqlCommand cmd = new MySqlCommand(query, koneksi.GetConnection()))
+                {
+                    cmd.Parameters.AddWithValue("@Email", email);
+                    cmd.Parameters.AddWithValue("@Username", username);
+                    cmd.Parameters.AddWithValue("@Role", role);
+
+                    if (!string.IsNullOrWhiteSpace(password))
+                    {
+                        cmd.Parameters.AddWithValue("@Password", password);
+                    }
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Pengguna berhasil diperbarui!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        resetData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Gagal memperbarui pengguna!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show($"Gagal memperbarui pengguna: {err.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine($"Error: {err.Message}");
             }
             finally
