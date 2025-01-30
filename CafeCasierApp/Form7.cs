@@ -15,7 +15,7 @@ namespace CafeCasierApp
     {
         private readonly Koneksi koneksi;
         private DataTable dataTable;
-        private string idMenu, idPelanggan, totalOrder, totalPrice, price;
+        private string idMenu, idPelanggan, idDetailPesanan, totalOrder, totalPrice, price;
         public PesananForm()
         {
             InitializeComponent();
@@ -39,7 +39,7 @@ namespace CafeCasierApp
         private void resetData()
         {
             this.idMenu = "";
-            this.idPelanggan = "";
+            this.idDetailPesanan = "";
             this.totalOrder = "";
             this.totalPrice = "";
             this.price = "";
@@ -48,7 +48,6 @@ namespace CafeCasierApp
             txtJumlahPesanan.Text = "";
             txtTotalHarga.Text = "";
 
-            cmbPelanggan.SelectedIndex = -1;
             cmbMenu.SelectedIndex = -1;
 
             this.btnTambah.Enabled = true;
@@ -136,7 +135,8 @@ namespace CafeCasierApp
 
                 string query = @"SELECT menu.nama AS 'nama_pesanan', 
                         menu.harga AS 'harga', 
-                        pesanan.jml_pesanan AS 'jumlah',
+                        detail_pesanan.jml_pesanan AS 'jumlah',
+                        detail_pesanan.total_harga AS 'total_harga',
                         pesanan.nomor_meja AS 'nomor_meja',
                         pesanan.nomor_lantai AS 'nomor_lantai',
                         pesanan.tgl_pesanan AS 'tanggal_pesanan',
@@ -230,17 +230,145 @@ namespace CafeCasierApp
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(this.idMenu) || string.IsNullOrWhiteSpace(this.idPelanggan) ||
+                string.IsNullOrWhiteSpace(this.totalOrder) || string.IsNullOrWhiteSpace(this.totalPrice) ||
+                string.IsNullOrWhiteSpace(this.price))
+            {
+                MessageBox.Show("Semua field harus diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            try
+            {
+                koneksi.openConnection();
+                string query = @"UPDATE detail_pesanan SET menu_id = @IdMenu, harga = @Harga, jml_pesanan = @JmlPesanan, total_harga = @TotalHarga 
+                        WHERE id_detail_pesanan = @IdDetailPesanan";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, koneksi.GetConnection()))
+                {
+                    cmd.Parameters.AddWithValue("@IdPesanan", this.idPelanggan);
+                    cmd.Parameters.AddWithValue("@IdMenu", this.idMenu);
+                    cmd.Parameters.AddWithValue("@Harga", Convert.ToDecimal(this.price));
+                    cmd.Parameters.AddWithValue("@JmlPesanan", Convert.ToInt32(this.totalOrder));
+                    cmd.Parameters.AddWithValue("@TotalHarga", Convert.ToDecimal(this.totalPrice));
+                    cmd.Parameters.AddWithValue("@IdDetailPesanan", Convert.ToDecimal(this.idDetailPesanan));
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Pesanan berhasil diperbarui!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadDataPesanan();
+                        resetData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Gagal memperbarui pesanan!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show($"Gagal mengedit pesanan: {err.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                koneksi.CloseConnection();
+            }
         }
 
         private void btnTambah_Click(object sender, EventArgs e)
         {
+            if 
+               (string.IsNullOrWhiteSpace(this.idMenu) 
+               || string.IsNullOrWhiteSpace(this.idPelanggan) 
+               || string.IsNullOrWhiteSpace(this.totalOrder) 
+               || string.IsNullOrWhiteSpace(this.totalPrice) 
+               || string.IsNullOrWhiteSpace(this.price)
+            )
+            {
+                MessageBox.Show("Semua field harus diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            try
+            {
+                koneksi.openConnection();
+                string query = @"INSERT INTO detail_pesanan (pesanan_id, menu_id, harga, jml_pesanan, total_harga) 
+                VALUES (@IdPesanan, @IdMenu, @Harga, @JmlPesanan, @TotalHarga)";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, koneksi.GetConnection()))
+                {
+                    cmd.Parameters.AddWithValue("@IdPesanan", string.IsNullOrEmpty(this.idPelanggan) ? DBNull.Value : this.idPelanggan);
+                    cmd.Parameters.AddWithValue("@IdMenu", string.IsNullOrEmpty(this.idMenu) ? DBNull.Value : this.idMenu);
+                    cmd.Parameters.AddWithValue("@Harga", string.IsNullOrEmpty(this.price) ? 0 : Convert.ToDecimal(this.price));
+                    cmd.Parameters.AddWithValue("@JmlPesanan", string.IsNullOrEmpty(this.totalOrder) ? 0 : Convert.ToInt32(this.totalOrder));
+                    cmd.Parameters.AddWithValue("@TotalHarga", string.IsNullOrEmpty(this.totalPrice) ? 0 : Convert.ToDecimal(this.totalPrice));
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Pesanan berhasil ditambahkan!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadDataPesanan();
+                        resetData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Gagal menambahkan pesanan!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show($"Gagal menambah pesanan: {err.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine($"Error: {err.Message}");
+            }
+            finally
+            {
+                koneksi.CloseConnection();
+            }
         }
 
         private void btnHapus_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(this.idMenu) || string.IsNullOrWhiteSpace(this.idPelanggan))
+            {
+                MessageBox.Show("Pilih pesanan yang ingin dihapus!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            DialogResult result = MessageBox.Show("Apakah Anda yakin ingin menghapus pesanan ini?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No) return;
+
+            try
+            {
+                koneksi.openConnection();
+                string query = "DELETE FROM detail_pesanan WHERE id_detail_pesanan = @IdDetailPesanan";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, koneksi.GetConnection()))
+                {
+                    cmd.Parameters.AddWithValue("@IdDetailPesanan", Convert.ToDecimal(this.idDetailPesanan));
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Pesanan berhasil dihapus!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadDataPesanan();
+                        resetData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Gagal menghapus pesanan!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show($"Gagal menghapus pesanan: {err.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                koneksi.CloseConnection();
+            }
         }
 
         private void tableData_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -258,9 +386,13 @@ namespace CafeCasierApp
                 this.idMenu = row.Cells["id_menu"].Value?.ToString() ?? "";
                 this.idPelanggan = row.Cells["id_pesanan"].Value?.ToString() ?? "";
                 this.totalOrder = row.Cells["jumlah"].Value?.ToString() ?? "0";
+                this.totalPrice = row.Cells["total_harga"].Value?.ToString() ?? "0";
+                this.idDetailPesanan = row.Cells["id_detail_pesanan"].Value?.ToString() ?? "";
+
                 txtJumlahPesanan.Text = this.totalOrder;
                 txtHarga.Text = this.price;
-                calculateOrderPrice();
+                txtTotalHarga.Text = this.totalPrice;
+
             }
 
         }
@@ -307,6 +439,8 @@ namespace CafeCasierApp
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
+            this.cmbPelanggan.SelectedIndex = -1;
+            this.idPelanggan = "";
             resetData();
         }
     }
