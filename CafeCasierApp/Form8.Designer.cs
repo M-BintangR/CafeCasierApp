@@ -36,13 +36,13 @@
             label5 = new Label();
             cmbPelanggan = new ComboBox();
             panel3 = new Panel();
-            label6 = new Label();
-            label3 = new Label();
-            btnRefresh = new Button();
+            lblStatusPayment = new Label();
+            statusPayment = new Label();
+            btnPayment = new Button();
             label2 = new Label();
-            textBox1 = new TextBox();
+            txtTotalHarga = new TextBox();
             label4 = new Label();
-            txtNomorLantai = new TextBox();
+            txtTotalItem = new TextBox();
             tableData = new DataGridView();
             panel1 = new Panel();
             panel2.SuspendLayout();
@@ -121,17 +121,18 @@
             cmbPelanggan.Name = "cmbPelanggan";
             cmbPelanggan.Size = new Size(354, 23);
             cmbPelanggan.TabIndex = 18;
+            cmbPelanggan.SelectedIndexChanged += cmbPelanggan_SelectedIndexChanged;
             // 
             // panel3
             // 
             panel3.BackColor = Color.White;
-            panel3.Controls.Add(label6);
-            panel3.Controls.Add(label3);
-            panel3.Controls.Add(btnRefresh);
+            panel3.Controls.Add(lblStatusPayment);
+            panel3.Controls.Add(statusPayment);
+            panel3.Controls.Add(btnPayment);
             panel3.Controls.Add(label2);
-            panel3.Controls.Add(textBox1);
+            panel3.Controls.Add(txtTotalHarga);
             panel3.Controls.Add(label4);
-            panel3.Controls.Add(txtNomorLantai);
+            panel3.Controls.Add(txtTotalItem);
             panel3.Controls.Add(label5);
             panel3.Controls.Add(cmbPelanggan);
             panel3.Controls.Add(tableData);
@@ -140,41 +141,42 @@
             panel3.Size = new Size(584, 451);
             panel3.TabIndex = 1;
             // 
-            // label6
+            // lblStatusPayment
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(410, 22);
-            label6.Name = "label6";
-            label6.RightToLeft = RightToLeft.Yes;
-            label6.Size = new Size(162, 20);
-            label6.TabIndex = 25;
-            label6.Text = "STATUS PEMBAYARAN";
+            lblStatusPayment.AutoSize = true;
+            lblStatusPayment.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblStatusPayment.Location = new Point(410, 22);
+            lblStatusPayment.Name = "lblStatusPayment";
+            lblStatusPayment.RightToLeft = RightToLeft.Yes;
+            lblStatusPayment.Size = new Size(162, 20);
+            lblStatusPayment.TabIndex = 25;
+            lblStatusPayment.Text = "STATUS PEMBAYARAN";
             // 
-            // label3
+            // statusPayment
             // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.Red;
-            label3.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(420, 54);
-            label3.Name = "label3";
-            label3.Padding = new Padding(10, 5, 10, 5);
-            label3.Size = new Size(141, 47);
-            label3.TabIndex = 24;
-            label3.Text = "UNPAID";
+            statusPayment.AutoSize = true;
+            statusPayment.BackColor = Color.Red;
+            statusPayment.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            statusPayment.ForeColor = Color.White;
+            statusPayment.Location = new Point(420, 54);
+            statusPayment.Name = "statusPayment";
+            statusPayment.Padding = new Padding(10, 5, 10, 5);
+            statusPayment.Size = new Size(141, 47);
+            statusPayment.TabIndex = 24;
+            statusPayment.Text = "UNPAID";
             // 
-            // btnRefresh
+            // btnPayment
             // 
-            btnRefresh.BackColor = Color.Lime;
-            btnRefresh.Font = new Font("Segoe UI Semibold", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnRefresh.ForeColor = Color.White;
-            btnRefresh.Location = new Point(410, 359);
-            btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(151, 61);
-            btnRefresh.TabIndex = 10;
-            btnRefresh.Text = "BAYAR";
-            btnRefresh.UseVisualStyleBackColor = false;
+            btnPayment.BackColor = Color.Lime;
+            btnPayment.Font = new Font("Segoe UI Semibold", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnPayment.ForeColor = Color.White;
+            btnPayment.Location = new Point(410, 359);
+            btnPayment.Name = "btnPayment";
+            btnPayment.Size = new Size(151, 61);
+            btnPayment.TabIndex = 10;
+            btnPayment.Text = "BAYAR";
+            btnPayment.UseVisualStyleBackColor = false;
+            btnPayment.Click += btnPayment_Click;
             // 
             // label2
             // 
@@ -187,16 +189,16 @@
             label2.TabIndex = 23;
             label2.Text = "Total Harga";
             // 
-            // textBox1
+            // txtTotalHarga
             // 
-            textBox1.BackColor = SystemColors.ScrollBar;
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("Segoe UI", 9F);
-            textBox1.Location = new Point(148, 384);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(240, 36);
-            textBox1.TabIndex = 22;
+            txtTotalHarga.BackColor = SystemColors.ScrollBar;
+            txtTotalHarga.BorderStyle = BorderStyle.None;
+            txtTotalHarga.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            txtTotalHarga.Location = new Point(148, 384);
+            txtTotalHarga.Multiline = true;
+            txtTotalHarga.Name = "txtTotalHarga";
+            txtTotalHarga.Size = new Size(240, 36);
+            txtTotalHarga.TabIndex = 22;
             // 
             // label4
             // 
@@ -209,16 +211,16 @@
             label4.TabIndex = 21;
             label4.Text = "Total Item";
             // 
-            // txtNomorLantai
+            // txtTotalItem
             // 
-            txtNomorLantai.BackColor = SystemColors.ScrollBar;
-            txtNomorLantai.BorderStyle = BorderStyle.None;
-            txtNomorLantai.Font = new Font("Segoe UI", 9F);
-            txtNomorLantai.Location = new Point(34, 384);
-            txtNomorLantai.Multiline = true;
-            txtNomorLantai.Name = "txtNomorLantai";
-            txtNomorLantai.Size = new Size(95, 36);
-            txtNomorLantai.TabIndex = 20;
+            txtTotalItem.BackColor = SystemColors.ScrollBar;
+            txtTotalItem.BorderStyle = BorderStyle.None;
+            txtTotalItem.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtTotalItem.Location = new Point(34, 384);
+            txtTotalItem.Multiline = true;
+            txtTotalItem.Name = "txtTotalItem";
+            txtTotalItem.Size = new Size(95, 36);
+            txtTotalItem.TabIndex = 20;
             // 
             // tableData
             // 
@@ -229,6 +231,7 @@
             tableData.Name = "tableData";
             tableData.Size = new Size(530, 218);
             tableData.TabIndex = 2;
+            tableData.CellContentClick += tableData_CellContentClick;
             // 
             // panel1
             // 
@@ -269,14 +272,14 @@
         private Label label5;
         private ComboBox cmbPelanggan;
         private Panel panel3;
-        private Button btnRefresh;
+        private Button btnPayment;
         private DataGridView tableData;
         private Panel panel1;
-        private Label label3;
+        private Label statusPayment;
         private Label label2;
-        private TextBox textBox1;
+        private TextBox txtTotalHarga;
         private Label label4;
-        private TextBox txtNomorLantai;
-        private Label label6;
+        private TextBox txtTotalItem;
+        private Label lblStatusPayment;
     }
 }

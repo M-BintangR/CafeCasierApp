@@ -110,13 +110,14 @@ namespace CafeCasierApp
             try
             {
                 koneksi.openConnection();
-                string query = "INSERT INTO pesanan (nama_pelanggan, nomor_meja, nomor_lantai) VALUES (@Nama, @Meja, @Lantai)";
+                string query = "INSERT INTO pesanan (nama_pelanggan, nomor_meja, nomor_lantai, tgl_pesanan) VALUES (@Nama, @Meja, @Lantai, @TglPesanan)";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, koneksi.GetConnection()))
                 {
                     cmd.Parameters.AddWithValue("@Nama", nameCustomer);
                     cmd.Parameters.AddWithValue("@Meja", tableNumber);
                     cmd.Parameters.AddWithValue("@Lantai", floorNumber);
+                    cmd.Parameters.AddWithValue("@TglPesanan", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
                     int rowsAffected = cmd.ExecuteNonQuery();
                     if (rowsAffected > 0)

@@ -293,14 +293,13 @@ namespace CafeCasierApp
             try
             {
                 koneksi.openConnection();
-                string query = @"INSERT INTO detail_pesanan (pesanan_id, menu_id, harga, jml_pesanan, total_harga) 
-                VALUES (@IdPesanan, @IdMenu, @Harga, @JmlPesanan, @TotalHarga)";
+                string query = @"INSERT INTO detail_pesanan (pesanan_id, menu_id, jml_pesanan, total_harga) 
+                VALUES (@IdPesanan, @IdMenu, @JmlPesanan, @TotalHarga)";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, koneksi.GetConnection()))
                 {
                     cmd.Parameters.AddWithValue("@IdPesanan", string.IsNullOrEmpty(this.idPelanggan) ? DBNull.Value : this.idPelanggan);
                     cmd.Parameters.AddWithValue("@IdMenu", string.IsNullOrEmpty(this.idMenu) ? DBNull.Value : this.idMenu);
-                    cmd.Parameters.AddWithValue("@Harga", string.IsNullOrEmpty(this.price) ? 0 : Convert.ToDecimal(this.price));
                     cmd.Parameters.AddWithValue("@JmlPesanan", string.IsNullOrEmpty(this.totalOrder) ? 0 : Convert.ToInt32(this.totalOrder));
                     cmd.Parameters.AddWithValue("@TotalHarga", string.IsNullOrEmpty(this.totalPrice) ? 0 : Convert.ToDecimal(this.totalPrice));
 
