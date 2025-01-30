@@ -229,6 +229,8 @@ namespace CafeCasierApp
 
         private void tableData_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            resetData();
+
             this.btnTambah.Enabled = false;
             this.btnEdit.Enabled = true;
             this.btnHapus.Enabled = true;

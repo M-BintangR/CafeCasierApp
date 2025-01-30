@@ -18,7 +18,7 @@ namespace CafeCasierApp
             this.cmbPeran.Items.Clear();
             this.cmbPeran.Items.Add("admin");
             this.cmbPeran.Items.Add("kasir");
-            this.cmbPeran.SelectedIndex = 0;
+            this.cmbPeran.SelectedIndex = -1;
 
             this.btnTambah.Enabled = true;
             this.btnEdit.Enabled = false;
@@ -98,7 +98,7 @@ namespace CafeCasierApp
             txtEmail.Text = "";
             txtPassword.Text = "";
             txtUsername.Text = "";
-            cmbPeran.SelectedIndex = 0;
+            cmbPeran.SelectedIndex = -1;
 
             this.btnTambah.Enabled = true;
             this.btnEdit.Enabled = false;
@@ -150,6 +150,8 @@ namespace CafeCasierApp
 
         private void tableData_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            resetData();
+
             this.btnTambah.Enabled = false;
             this.btnEdit.Enabled = true;
             this.btnHapus.Enabled = true;
